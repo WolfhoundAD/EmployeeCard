@@ -157,7 +157,7 @@
             this.delTSMDep,
             this.удалитьВСпискеToolStripMenuItem});
             this.DepartmentMenuItem.Name = "DepartmentMenuItem";
-            this.DepartmentMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.DepartmentMenuItem.Size = new System.Drawing.Size(140, 22);
             this.DepartmentMenuItem.Text = "Отделы";
             // 
             // addTSMDep
@@ -195,27 +195,27 @@
             this.editTSMEmpl,
             this.delTSMEmpl});
             this.emplMenuItem.Name = "emplMenuItem";
-            this.emplMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.emplMenuItem.Size = new System.Drawing.Size(140, 22);
             this.emplMenuItem.Text = "Сотрудники";
             // 
             // addTSMEmpl
             // 
             this.addTSMEmpl.Name = "addTSMEmpl";
-            this.addTSMEmpl.Size = new System.Drawing.Size(180, 22);
+            this.addTSMEmpl.Size = new System.Drawing.Size(128, 22);
             this.addTSMEmpl.Text = "Добавить";
             this.addTSMEmpl.Click += new System.EventHandler(this.addTSMEmpl_Click);
             // 
             // editTSMEmpl
             // 
             this.editTSMEmpl.Name = "editTSMEmpl";
-            this.editTSMEmpl.Size = new System.Drawing.Size(180, 22);
+            this.editTSMEmpl.Size = new System.Drawing.Size(128, 22);
             this.editTSMEmpl.Text = "Изменить";
             this.editTSMEmpl.Click += new System.EventHandler(this.editTSMEmpl_Click);
             // 
             // delTSMEmpl
             // 
             this.delTSMEmpl.Name = "delTSMEmpl";
-            this.delTSMEmpl.Size = new System.Drawing.Size(180, 22);
+            this.delTSMEmpl.Size = new System.Drawing.Size(128, 22);
             this.delTSMEmpl.Text = "Удалить";
             this.delTSMEmpl.Click += new System.EventHandler(this.delTSMEmpl_Click);
             // 
@@ -535,6 +535,7 @@
             this.departmentsCB.Name = "departmentsCB";
             this.departmentsCB.Size = new System.Drawing.Size(332, 21);
             this.departmentsCB.TabIndex = 1;
+            this.departmentsCB.SelectedIndexChanged += new System.EventHandler(this.departmentsCB_SelectedIndexChanged);
             // 
             // groupBoxEmpl
             // 

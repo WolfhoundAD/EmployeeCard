@@ -60,6 +60,7 @@ namespace EmployeeCard
             {
                 MessageBox.Show(ex.ToString());
             }
+            RefreshData();
         }
 
         private void editTSMDep_Click(object sender, EventArgs e)
@@ -75,6 +76,7 @@ namespace EmployeeCard
             {
                 MessageBox.Show(ex.ToString());
             }
+            RefreshData();
 
         }
         private void editDepMenuItem_Click(object sender, EventArgs e)
@@ -98,12 +100,12 @@ namespace EmployeeCard
                 DBHelper.DeleteEntry(Constants.TableNames.DepartmentsTableName, id);
                 this.departmentsTableAdapter.Fill(this.employeeBDDataSet.Departments);
             }
-            /*
+            //RefreshData();
             if (new DeleteDepForm().ShowDialog() == DialogResult.OK)
             {
                 RefreshData();
             }
-            */
+            
         }
 
         void DeleteEmployee()
@@ -128,16 +130,19 @@ namespace EmployeeCard
                 DBHelper.DeleteEntry(Constants.TableNames.EmployeesTableName, id);
                 this.employeesTableAdapter.Fill(this.employeeBDDataSet.Employees);
             }
+            RefreshData();
         }
         private void delTSMEmpl_Click(object sender, EventArgs e)
         {
             DeleteEmployee();
+          
         }
             
 
         private void delEmpl_Click(object sender, EventArgs e)
         {
              DeleteEmployee();
+         
         }
 
         private void удалитьВСпискеToolStripMenuItem_Click(object sender, EventArgs e)
@@ -145,7 +150,9 @@ namespace EmployeeCard
             if (new DeleteDepForm().ShowDialog() == DialogResult.OK)
             {
                 this.departmentsTableAdapter.Fill(this.employeeBDDataSet.Departments);
+               
             }
+            RefreshData();
         }
         private void RefreshEmployes()
         {
@@ -162,10 +169,10 @@ namespace EmployeeCard
                     MessageBox.Show("Не выбран ни один сотрудник!");
                     return;
                 }
-                var id = 0;
+                var Id = 0;
 
-                int.TryParse(EmployeeGV.SelectedRows[0].Cells[0].Value?.ToString(), out id);
-                if (id != 0 && new EditEmployeeForm(true, id).ShowDialog() == DialogResult.OK)
+                int.TryParse(EmployeeGV.SelectedRows[0].Cells[0].Value?.ToString(), out Id);
+                if (Id != 0 && new EditEmployeeForm(true, Id).ShowDialog() == DialogResult.OK)
                 {
                     RefreshEmployes();
                 }
@@ -196,7 +203,10 @@ namespace EmployeeCard
         {
             EditEmployee();
         }
-       
 
+        private void departmentsCB_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

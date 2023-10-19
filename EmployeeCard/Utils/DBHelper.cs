@@ -20,6 +20,31 @@ namespace EmployeeCard.Utils
     }
     public static class DBHelper
     {
+        public static List<string> SelectValuesFromTable(string tableName, int id)
+        {
+            var result = new List<string>();
+            try
+            {
+                var conn = new SqlConnection(Properties.Settings.Default.EmployeeBDConnectionString);
+                var query = $"SELECT * FROM {tableName} WHERE Id = {id}";
+                var cmd = new SqlCommand(query, conn);
+                conn.Open();
+                var reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    result.Clear();
+                    for (var i = 0; i < reader.FieldCount; i++)
+                    {
+                        result.Add(reader[i].ToString());
+                    }
+                }
+            }
+            catch
+            {
+
+            }
+            return result;
+        }
         public static int InsertEntry(string tableName, Dictionary<string, TableField> fields)
         {
                 var res = 0;

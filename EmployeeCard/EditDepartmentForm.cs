@@ -33,7 +33,7 @@ namespace EmployeeCard
             if(_editMode)
             {  
                 var fieldsValues = DBHelper.Equals(Constants.TableNames.DepartmentsTableName, _depId);
-                // var fields = DBHelper.SelectValuseFromTable(Constants.TableNames.DepartmentsTableName, _depId);
+                 var fields = DBHelper.SelectValuesFromTable(Constants.TableNames.DepartmentsTableName, _depId);
                 //textBoxDepName.Text = fieldsValues[1];
              
             }
