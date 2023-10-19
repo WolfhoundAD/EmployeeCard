@@ -79,6 +79,7 @@
             this.Controls.Add(this.buttonSaveDep);
             this.Controls.Add(this.textBoxDepName);
             this.Controls.Add(this.labelDepName);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.MaximumSize = new System.Drawing.Size(400, 155);
             this.MinimumSize = new System.Drawing.Size(400, 155);
             this.Name = "EditDepartmentForm";

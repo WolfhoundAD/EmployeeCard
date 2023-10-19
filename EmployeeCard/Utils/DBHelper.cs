@@ -26,10 +26,11 @@ namespace EmployeeCard.Utils
             try
             {
                 var conn = new SqlConnection(Properties.Settings.Default.EmployeeBDConnectionString);
-                var query = $"SELECT * FROM {tableName} WHERE Id = {id}";
+                var query = $"SELECT * FROM {tableName} WHERE {Constants.FieldsName.Id} = {id}";
                 var cmd = new SqlCommand(query, conn);
                 conn.Open();
                 var reader = cmd.ExecuteReader();
+
                 while (reader.Read())
                 {
                     result.Clear();
@@ -93,17 +94,19 @@ namespace EmployeeCard.Utils
                     }
                     return $"{f.Key}= {fieldValue}";
                 }));
-                var query = $"UPDATE {tableName} SET {updatingFieldsValues} WHERE Id = {id}";
+                var query = $"UPDATE {tableName} SET {updatingFieldsValues} WHERE {Constants.FieldsName.Id} = {id}";
                 var cmd = new SqlCommand(query, conn);
                 conn.Open();
                 cmd.ExecuteNonQuery();
                 conn.Close();  
+
+            
         }
         public static void DeleteEntry(string tableName, int id)
         {
             
             var conn = new SqlConnection(Properties.Settings.Default.EmployeeBDConnectionString);
-                var query = $"DELETE FROM {tableName} WHERE Id={id}";
+                var query = $"DELETE FROM {tableName} WHERE {Constants.FieldsName.Id}={id}";
                 var cmd = new SqlCommand(query, conn);
                 conn.Open();
                 cmd.ExecuteNonQuery();

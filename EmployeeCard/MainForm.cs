@@ -54,36 +54,37 @@ namespace EmployeeCard
                 if (new EditDepartmentForm().ShowDialog() == DialogResult.OK)
                 {
                     this.departmentsTableAdapter.Fill(this.employeeBDDataSet.Departments);
+
                 }
             }
             catch(Exception ex)
             {
                 MessageBox.Show(ex.ToString());
             }
-            RefreshData();
+           
         }
 
         private void editTSMDep_Click(object sender, EventArgs e)
         {
-            try
+            if(departmentsCB.Items.Count == 0)
             {
-                if (new EditDepartmentForm(true, 1).ShowDialog() == DialogResult.OK)
-                {
-                this.departmentsTableAdapter.Fill(this.employeeBDDataSet.Departments);
-                }
+                MessageBox.Show("Отсутствует выбранный отдел");
+                return;
             }
-            catch (Exception ex)
+            var id = 0;
+            if (int.TryParse(departmentsCB.SelectedValue.ToString(), out id)
+                && new EditDepartmentForm(true, id).ShowDialog() == DialogResult.OK)
             {
-                MessageBox.Show(ex.ToString());
+                   this.departmentsTableAdapter.Fill(this.employeeBDDataSet.Departments);
             }
-            RefreshData();
-
+  
         }
+        
         private void editDepMenuItem_Click(object sender, EventArgs e)
         {
             new EditDepartmentForm(true, 1).ShowDialog();
         }
-
+        
         private void delTSMDep_Click(object sender, EventArgs e)
         {
             if (departmentsCB.Items.Count == 0)
@@ -100,7 +101,7 @@ namespace EmployeeCard
                 DBHelper.DeleteEntry(Constants.TableNames.DepartmentsTableName, id);
                 this.departmentsTableAdapter.Fill(this.employeeBDDataSet.Departments);
             }
-            //RefreshData();
+            
             if (new DeleteDepForm().ShowDialog() == DialogResult.OK)
             {
                 RefreshData();
@@ -169,10 +170,10 @@ namespace EmployeeCard
                     MessageBox.Show("Не выбран ни один сотрудник!");
                     return;
                 }
-                var Id = 0;
+                var id = 0;
 
-                int.TryParse(EmployeeGV.SelectedRows[0].Cells[0].Value?.ToString(), out Id);
-                if (Id != 0 && new EditEmployeeForm(true, Id).ShowDialog() == DialogResult.OK)
+                int.TryParse(EmployeeGV.SelectedRows[0].Cells[0].Value?.ToString(), out id);
+                if (id != 0 && new EditEmployeeForm(true, id).ShowDialog() == DialogResult.OK)
                 {
                     RefreshEmployes();
                 }

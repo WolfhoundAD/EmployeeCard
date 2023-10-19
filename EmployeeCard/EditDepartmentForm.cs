@@ -21,7 +21,7 @@ namespace EmployeeCard
             InitializeComponent();
         }
 
-        public EditDepartmentForm(bool editMode, int depId = 0)
+        public EditDepartmentForm(bool editMode = false, int depId = 0)
         {
             _editMode = editMode;
             _depId = depId;
@@ -32,9 +32,9 @@ namespace EmployeeCard
         {
             if(_editMode)
             {  
-                var fieldsValues = DBHelper.Equals(Constants.TableNames.DepartmentsTableName, _depId);
-                 var fields = DBHelper.SelectValuesFromTable(Constants.TableNames.DepartmentsTableName, _depId);
-                //textBoxDepName.Text = fieldsValues[1];
+               // var fieldsValues = DBHelper.Equals(Constants.TableNames.DepartmentsTableName, _depId);
+                 var fieldsValues = DBHelper.SelectValuesFromTable(Constants.TableNames.DepartmentsTableName, _depId);
+                textBoxDepName.Text = fieldsValues[1];
              
             }
         }
@@ -43,7 +43,13 @@ namespace EmployeeCard
         {
             if(_editMode)
             {
-                
+                var fields = new Dictionary<string, TableField>();
+                fields.Add(Constants.FieldsName.DepartmentsTable.Title, new TableField
+                {
+                    TableFieldType = TableFieldTypes.nvarchar,
+                    TableFieldValue = textBoxDepName.Text
+                });
+                DBHelper.UpdateEntry(Constants.TableNames.DepartmentsTableName, _depId, fields);
             }
             else
             {
@@ -54,6 +60,7 @@ namespace EmployeeCard
                     TableFieldValue = textBoxDepName.Text
                 }) ;
                 DBHelper.InsertEntry(Constants.TableNames.DepartmentsTableName, fields);
+                DialogResult = DialogResult.OK;
             }
         }
     }
