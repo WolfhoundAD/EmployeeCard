@@ -131,7 +131,7 @@ namespace EmployeeCard
                 DBHelper.DeleteEntry(Constants.TableNames.EmployeesTableName, id);
                 this.employeesTableAdapter.Fill(this.employeeBDDataSet.Employees);
             }
-            RefreshData();
+          
         }
         private void delTSMEmpl_Click(object sender, EventArgs e)
         {

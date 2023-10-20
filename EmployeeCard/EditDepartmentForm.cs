@@ -32,7 +32,6 @@ namespace EmployeeCard
         {
             if(_editMode)
             {  
-               // var fieldsValues = DBHelper.Equals(Constants.TableNames.DepartmentsTableName, _depId);
                  var fieldsValues = DBHelper.SelectValuesFromTable(Constants.TableNames.DepartmentsTableName, _depId);
                 textBoxDepName.Text = fieldsValues[1];
              
@@ -50,6 +49,7 @@ namespace EmployeeCard
                     TableFieldValue = textBoxDepName.Text
                 });
                 DBHelper.UpdateEntry(Constants.TableNames.DepartmentsTableName, _depId, fields);
+                DialogResult = DialogResult.OK;
             }
             else
             {

@@ -105,7 +105,7 @@ namespace EmployeeCard.Utils
         public static void DeleteEntry(string tableName, int id)
         {
             
-            var conn = new SqlConnection(Properties.Settings.Default.EmployeeBDConnectionString);
+                var conn = new SqlConnection(Properties.Settings.Default.EmployeeBDConnectionString);
                 var query = $"DELETE FROM {tableName} WHERE {Constants.FieldsName.Id}={id}";
                 var cmd = new SqlCommand(query, conn);
                 conn.Open();

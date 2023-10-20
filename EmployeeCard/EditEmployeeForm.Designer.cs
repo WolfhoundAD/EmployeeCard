@@ -121,7 +121,7 @@
             // 
             // richTextBoxAddres
             // 
-            this.richTextBoxAddres.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dataTable1BindingSource, "Address", true));
+            this.richTextBoxAddres.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.editEmployeeDataSet, "DataTable1.Address", true));
             this.richTextBoxAddres.Location = new System.Drawing.Point(6, 248);
             this.richTextBoxAddres.Name = "richTextBoxAddres";
             this.richTextBoxAddres.Size = new System.Drawing.Size(388, 131);
@@ -149,7 +149,7 @@
             // 
             // textBoxCitizenship
             // 
-            this.textBoxCitizenship.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dataTable1BindingSource, "Citizenship", true));
+            this.textBoxCitizenship.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.editEmployeeDataSet, "DataTable1.Citizenship", true));
             this.textBoxCitizenship.Location = new System.Drawing.Point(6, 205);
             this.textBoxCitizenship.Name = "textBoxCitizenship";
             this.textBoxCitizenship.Size = new System.Drawing.Size(388, 20);
@@ -166,7 +166,7 @@
             // 
             // dateTimePickerBirthDay
             // 
-            this.dateTimePickerBirthDay.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dataTable1BindingSource, "BirthDay", true));
+            this.dateTimePickerBirthDay.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.editEmployeeDataSet, "DataTable1.BirthDay", true));
             this.dateTimePickerBirthDay.Location = new System.Drawing.Point(6, 162);
             this.dateTimePickerBirthDay.Name = "dateTimePickerBirthDay";
             this.dateTimePickerBirthDay.Size = new System.Drawing.Size(388, 20);
@@ -183,7 +183,7 @@
             // 
             // textBoxMiddleName
             // 
-            this.textBoxMiddleName.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dataTable1BindingSource, "MidleName", true));
+            this.textBoxMiddleName.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.editEmployeeDataSet, "DataTable1.MidleName", true));
             this.textBoxMiddleName.Location = new System.Drawing.Point(6, 118);
             this.textBoxMiddleName.Name = "textBoxMiddleName";
             this.textBoxMiddleName.Size = new System.Drawing.Size(388, 20);
@@ -191,7 +191,7 @@
             // 
             // textBoxFirstName
             // 
-            this.textBoxFirstName.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dataTable1BindingSource, "FirstName", true));
+            this.textBoxFirstName.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.editEmployeeDataSet, "DataTable1.FirstName", true));
             this.textBoxFirstName.Location = new System.Drawing.Point(6, 78);
             this.textBoxFirstName.Name = "textBoxFirstName";
             this.textBoxFirstName.Size = new System.Drawing.Size(388, 20);
@@ -199,7 +199,7 @@
             // 
             // textBoxLastName
             // 
-            this.textBoxLastName.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dataTable1BindingSource, "LastName", true));
+            this.textBoxLastName.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.editEmployeeDataSet, "DataTable1.LastName", true));
             this.textBoxLastName.Location = new System.Drawing.Point(6, 37);
             this.textBoxLastName.Name = "textBoxLastName";
             this.textBoxLastName.Size = new System.Drawing.Size(388, 20);
@@ -251,7 +251,7 @@
             // 
             // dateTimePickerWorkExperience
             // 
-            this.dateTimePickerWorkExperience.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dataTable1BindingSource, "WorkExperience", true));
+            this.dateTimePickerWorkExperience.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.editEmployeeDataSet, "DataTable1.WorkExperience", true));
             this.dateTimePickerWorkExperience.Location = new System.Drawing.Point(6, 222);
             this.dateTimePickerWorkExperience.Name = "dateTimePickerWorkExperience";
             this.dateTimePickerWorkExperience.Size = new System.Drawing.Size(388, 20);
@@ -277,7 +277,7 @@
             // 
             // richTextBoxEducation
             // 
-            this.richTextBoxEducation.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dataTable1BindingSource, "Education", true));
+            this.richTextBoxEducation.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.editEmployeeDataSet, "DataTable1.Education", true));
             this.richTextBoxEducation.Location = new System.Drawing.Point(6, 96);
             this.richTextBoxEducation.Name = "richTextBoxEducation";
             this.richTextBoxEducation.Size = new System.Drawing.Size(388, 96);
@@ -286,7 +286,7 @@
             // 
             // textBoxPost
             // 
-            this.textBoxPost.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dataTable1BindingSource, "Post", true));
+            this.textBoxPost.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.editEmployeeDataSet, "DataTable1.Post", true));
             this.textBoxPost.Location = new System.Drawing.Point(6, 37);
             this.textBoxPost.Name = "textBoxPost";
             this.textBoxPost.Size = new System.Drawing.Size(388, 20);
