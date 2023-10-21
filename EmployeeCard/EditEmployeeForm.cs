@@ -135,6 +135,31 @@ namespace EmployeeCard
             }) ;
             if(_isEditMode)
             {
+                personalDataFields[Constants.FieldsName.EmplPersonalDataTable.EmployeeId].TableFieldValue
+                   = _id.ToString();
+                workDataFields[Constants.FieldsName.EmplWorkDataTable.EmployeeId].TableFieldValue
+                    = _id.ToString();
+                DBHelper.UpdateEntry(Constants.TableNames.EmployeesTableName, _id, employeeFields);
+                DBHelper.UpdateEntry(Constants.TableNames.EmplPersonalDataTableName, new FieldForUpdate
+                {
+                    FieldName = Constants.FieldsName.EmplPersonalDataTable.EmployeeId,
+                    FieldValue = new TableField
+                    {
+                        TableFieldType = TableFieldTypes.integer,
+                        TableFieldValue = _id.ToString()
+                    }
+                }, personalDataFields);
+
+                DBHelper.UpdateEntry(Constants.TableNames.EmplWorkDataTableName, new FieldForUpdate
+                {
+                    FieldName = Constants.FieldsName.EmplWorkDataTable.EmployeeId,
+                    FieldValue = new TableField
+                    {
+                        TableFieldType = TableFieldTypes.integer,
+                        TableFieldValue = _id.ToString()
+                    }
+                }, workDataFields);
+                DialogResult = DialogResult.OK;
 
             }
             else

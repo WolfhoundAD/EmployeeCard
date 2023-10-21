@@ -33,6 +33,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.файлToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.departamentsTSM = new System.Windows.Forms.ToolStripMenuItem();
             this.DepartmentMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addTSMDep = new System.Windows.Forms.ToolStripMenuItem();
@@ -66,6 +67,7 @@
             this.educationTxt = new System.Windows.Forms.RichTextBox();
             this.fKEmplWorkDataEmployeesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.groupBox9 = new System.Windows.Forms.GroupBox();
+            this.WorkExpDisplayTxt = new System.Windows.Forms.TextBox();
             this.textBox5 = new System.Windows.Forms.TextBox();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
             this.textBox4 = new System.Windows.Forms.TextBox();
@@ -136,9 +138,18 @@
             // 
             // файлToolStripMenuItem
             // 
+            this.файлToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.exitToolStripMenuItem});
             this.файлToolStripMenuItem.Name = "файлToolStripMenuItem";
             this.файлToolStripMenuItem.Size = new System.Drawing.Size(48, 20);
             this.файлToolStripMenuItem.Text = "Файл";
+            // 
+            // exitToolStripMenuItem
+            // 
+            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(109, 22);
+            this.exitToolStripMenuItem.Text = "Выход";
+            this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
             // departamentsTSM
             // 
@@ -157,7 +168,7 @@
             this.delTSMDep,
             this.удалитьВСпискеToolStripMenuItem});
             this.DepartmentMenuItem.Name = "DepartmentMenuItem";
-            this.DepartmentMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.DepartmentMenuItem.Size = new System.Drawing.Size(140, 22);
             this.DepartmentMenuItem.Text = "Отделы";
             // 
             // addTSMDep
@@ -195,27 +206,27 @@
             this.editTSMEmpl,
             this.delTSMEmpl});
             this.emplMenuItem.Name = "emplMenuItem";
-            this.emplMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.emplMenuItem.Size = new System.Drawing.Size(140, 22);
             this.emplMenuItem.Text = "Сотрудники";
             // 
             // addTSMEmpl
             // 
             this.addTSMEmpl.Name = "addTSMEmpl";
-            this.addTSMEmpl.Size = new System.Drawing.Size(180, 22);
+            this.addTSMEmpl.Size = new System.Drawing.Size(128, 22);
             this.addTSMEmpl.Text = "Добавить";
             this.addTSMEmpl.Click += new System.EventHandler(this.addTSMEmpl_Click);
             // 
             // editTSMEmpl
             // 
             this.editTSMEmpl.Name = "editTSMEmpl";
-            this.editTSMEmpl.Size = new System.Drawing.Size(180, 22);
+            this.editTSMEmpl.Size = new System.Drawing.Size(128, 22);
             this.editTSMEmpl.Text = "Изменить";
             this.editTSMEmpl.Click += new System.EventHandler(this.editTSMEmpl_Click);
             // 
             // delTSMEmpl
             // 
             this.delTSMEmpl.Name = "delTSMEmpl";
-            this.delTSMEmpl.Size = new System.Drawing.Size(180, 22);
+            this.delTSMEmpl.Size = new System.Drawing.Size(128, 22);
             this.delTSMEmpl.Text = "Удалить";
             this.delTSMEmpl.Click += new System.EventHandler(this.delTSMEmpl_Click);
             // 
@@ -311,6 +322,7 @@
             this.addresTxt.Dock = System.Windows.Forms.DockStyle.Fill;
             this.addresTxt.Location = new System.Drawing.Point(3, 16);
             this.addresTxt.Name = "addresTxt";
+            this.addresTxt.ReadOnly = true;
             this.addresTxt.Size = new System.Drawing.Size(698, 120);
             this.addresTxt.TabIndex = 0;
             this.addresTxt.Text = "";
@@ -350,9 +362,9 @@
             // 
             this.textBox3.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.fKEmployeePersonalDataEmployeesBindingSource, "Citizenship", true));
             this.textBox3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBox3.Enabled = false;
             this.textBox3.Location = new System.Drawing.Point(3, 16);
             this.textBox3.Name = "textBox3";
+            this.textBox3.ReadOnly = true;
             this.textBox3.Size = new System.Drawing.Size(698, 20);
             this.textBox3.TabIndex = 0;
             // 
@@ -371,9 +383,9 @@
             // 
             this.textBox2.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.fKEmployeePersonalDataEmployeesBindingSource, "BirthDay", true));
             this.textBox2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBox2.Enabled = false;
             this.textBox2.Location = new System.Drawing.Point(3, 16);
             this.textBox2.Name = "textBox2";
+            this.textBox2.ReadOnly = true;
             this.textBox2.Size = new System.Drawing.Size(698, 20);
             this.textBox2.TabIndex = 0;
             // 
@@ -392,9 +404,9 @@
             // 
             this.textBox1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.fKEmployeePersonalDataEmployeesBindingSource, "Age", true));
             this.textBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBox1.Enabled = false;
             this.textBox1.Location = new System.Drawing.Point(3, 16);
             this.textBox1.Name = "textBox1";
+            this.textBox1.ReadOnly = true;
             this.textBox1.Size = new System.Drawing.Size(698, 20);
             this.textBox1.TabIndex = 0;
             // 
@@ -441,10 +453,12 @@
             // 
             // educationTxt
             // 
+            this.educationTxt.BackColor = System.Drawing.SystemColors.Control;
             this.educationTxt.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.fKEmplWorkDataEmployeesBindingSource, "Education", true));
             this.educationTxt.Dock = System.Windows.Forms.DockStyle.Fill;
             this.educationTxt.Location = new System.Drawing.Point(3, 16);
             this.educationTxt.Name = "educationTxt";
+            this.educationTxt.ReadOnly = true;
             this.educationTxt.Size = new System.Drawing.Size(698, 171);
             this.educationTxt.TabIndex = 0;
             this.educationTxt.Text = "";
@@ -456,6 +470,7 @@
             // 
             // groupBox9
             // 
+            this.groupBox9.Controls.Add(this.WorkExpDisplayTxt);
             this.groupBox9.Controls.Add(this.textBox5);
             this.groupBox9.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox9.Location = new System.Drawing.Point(3, 249);
@@ -465,15 +480,23 @@
             this.groupBox9.TabStop = false;
             this.groupBox9.Text = "Опыт работы:";
             // 
+            // WorkExpDisplayTxt
+            // 
+            this.WorkExpDisplayTxt.Location = new System.Drawing.Point(120, 16);
+            this.WorkExpDisplayTxt.Name = "WorkExpDisplayTxt";
+            this.WorkExpDisplayTxt.ReadOnly = true;
+            this.WorkExpDisplayTxt.Size = new System.Drawing.Size(578, 20);
+            this.WorkExpDisplayTxt.TabIndex = 1;
+            // 
             // textBox5
             // 
             this.textBox5.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.fKEmplWorkDataEmployeesBindingSource, "WorkExperience", true));
-            this.textBox5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBox5.Enabled = false;
             this.textBox5.Location = new System.Drawing.Point(3, 16);
             this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(698, 20);
+            this.textBox5.ReadOnly = true;
+            this.textBox5.Size = new System.Drawing.Size(111, 20);
             this.textBox5.TabIndex = 0;
+            this.textBox5.TextChanged += new System.EventHandler(this.textBox5_TextChanged);
             // 
             // groupBox8
             // 
@@ -490,9 +513,9 @@
             // 
             this.textBox4.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.fKEmplWorkDataEmployeesBindingSource, "Post", true));
             this.textBox4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBox4.Enabled = false;
             this.textBox4.Location = new System.Drawing.Point(3, 16);
             this.textBox4.Name = "textBox4";
+            this.textBox4.ReadOnly = true;
             this.textBox4.Size = new System.Drawing.Size(698, 20);
             this.textBox4.TabIndex = 0;
             // 
@@ -805,6 +828,8 @@
         private System.Windows.Forms.BindingSource fKEmplWorkDataEmployeesBindingSource;
         private EmployeeBDDataSetTableAdapters.EmplWorkDataTableAdapter emplWorkDataTableAdapter;
         private System.Windows.Forms.ToolStripMenuItem удалитьВСпискеToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
+        private System.Windows.Forms.TextBox WorkExpDisplayTxt;
     }
 }
 

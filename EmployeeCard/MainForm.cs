@@ -21,9 +21,18 @@ namespace EmployeeCard
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            RefreshData();
-            addresTxt.ReadOnly = true;
-            educationTxt.ReadOnly = true;
+            try
+            {
+
+            
+               RefreshData();
+               addresTxt.ReadOnly = true;
+               educationTxt.ReadOnly = true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
         }
         private void RefreshData()
         {
@@ -66,7 +75,9 @@ namespace EmployeeCard
 
         private void editTSMDep_Click(object sender, EventArgs e)
         {
-            if(departmentsCB.Items.Count == 0)
+            try
+            {
+                if (departmentsCB.Items.Count == 0)
             {
                 MessageBox.Show("Отсутствует выбранный отдел");
                 return;
@@ -77,7 +88,13 @@ namespace EmployeeCard
             {
                    this.departmentsTableAdapter.Fill(this.employeeBDDataSet.Departments);
             }
-  
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+
         }
         
         private void editDepMenuItem_Click(object sender, EventArgs e)
@@ -87,6 +104,10 @@ namespace EmployeeCard
         
         private void delTSMDep_Click(object sender, EventArgs e)
         {
+            try
+            {
+
+            
             if (departmentsCB.Items.Count == 0)
             {
                 MessageBox.Show("Отсутствует выбранный отдел!");
@@ -106,11 +127,20 @@ namespace EmployeeCard
             {
                 RefreshData();
             }
-            
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+
         }
 
         void DeleteEmployee()
         {
+            try
+            {
+
+            
             if(EmployeeGV.Rows.Count == 0 || EmployeeGV.SelectedRows.Count == 0)
             {
                 MessageBox.Show("Не выбран ни один сотрудник!");
@@ -131,7 +161,12 @@ namespace EmployeeCard
                 DBHelper.DeleteEntry(Constants.TableNames.EmployeesTableName, id);
                 this.employeesTableAdapter.Fill(this.employeeBDDataSet.Employees);
             }
-          
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+
         }
         private void delTSMEmpl_Click(object sender, EventArgs e)
         {
@@ -148,12 +183,21 @@ namespace EmployeeCard
 
         private void удалитьВСпискеToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            try
+            {
+
+            
             if (new DeleteDepForm().ShowDialog() == DialogResult.OK)
             {
                 this.departmentsTableAdapter.Fill(this.employeeBDDataSet.Departments);
                
             }
             RefreshData();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
         }
         private void RefreshEmployes()
         {
@@ -163,6 +207,10 @@ namespace EmployeeCard
         }
         private void EditEmployee(bool isEditMode = false)
         {
+            try
+            {
+
+            
             if (isEditMode)
             {
                 if (EmployeeGV.Rows.Count == 0 || EmployeeGV.SelectedRows.Count == 0)
@@ -183,6 +231,12 @@ namespace EmployeeCard
             else if(new EditEmployeeForm().ShowDialog() == DialogResult.OK)
             {
                 RefreshEmployes();
+            }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
             }
         }
         private void editEmpl_Click(object sender, EventArgs e)
@@ -208,6 +262,39 @@ namespace EmployeeCard
         private void departmentsCB_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        =>Application.Exit();
+
+        private void textBox5_TextChanged(object sender, EventArgs e)
+        {
+            try
+            { 
+                
+            var parsedDate = DateTime.Now;
+            if(DateTime.TryParse(((TextBox)sender).Text, out parsedDate))
+            {
+                var diff = DateTime.Now - parsedDate;
+                var totalDays = diff.TotalDays;
+
+                var years = Math.Floor(totalDays / 365);
+                var months = Math.Floor((totalDays - years * 365)/30);
+                var days = Math.Floor(totalDays - years * 365 - months * 30);
+
+                WorkExpDisplayTxt.Text = $"Лет: {years}, месяцев: {months}, дней: {days}";
+            }
+            else
+            {
+                WorkExpDisplayTxt.Clear();
+            }
+            
+            }
+            catch (Exception ex)
+            {
+                WorkExpDisplayTxt.Clear();
+                MessageBox.Show(ex.ToString());
+            }
         }
     }
 }

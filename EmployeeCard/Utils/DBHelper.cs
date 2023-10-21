@@ -18,6 +18,11 @@ namespace EmployeeCard.Utils
         public string TableFieldValue { get; set; }
         public TableFieldTypes TableFieldType { get; set; }
     }
+    public class FieldForUpdate
+    {
+        public string FieldName { get; set; }
+        public TableField FieldValue { get; set; }
+    }
     public static class DBHelper
     {
         public static List<string> SelectValuesFromTable(string tableName, int id)
@@ -48,28 +53,28 @@ namespace EmployeeCard.Utils
         }
         public static int InsertEntry(string tableName, Dictionary<string, TableField> fields)
         {
-                var res = 0;
-                var conn = new SqlConnection(Properties.Settings.Default.EmployeeBDConnectionString);
-                var fieldsNames = string.Join(",", fields.Select(f => f.Key));
-                var fieldsValues = string.Join(",", fields.Select(f =>
+            var res = 0;
+            var conn = new SqlConnection(Properties.Settings.Default.EmployeeBDConnectionString);
+            var fieldsNames = string.Join(",", fields.Select(f => f.Key));
+            var fieldsValues = string.Join(",", fields.Select(f =>
+            {
+                if (f.Value.TableFieldType == TableFieldTypes.integer)
                 {
-                    if (f.Value.TableFieldType == TableFieldTypes.integer)
-                    {
-                        return f.Value.TableFieldValue;
-                    }
-                    return $"'{f.Value.TableFieldValue}'";
-                }));
-                var query = $"INSERT INTO {tableName} ({fieldsNames}) VALUES ({fieldsValues})";
-                var cmd = new SqlCommand(query, conn);
-                conn.Open();
-                cmd.ExecuteNonQuery();
-                conn.Close();
+                    return f.Value.TableFieldValue;
+                }
+                return $"'{f.Value.TableFieldValue}'";
+            }));
+            var query = $"INSERT INTO {tableName} ({fieldsNames}) VALUES ({fieldsValues})";
+            var cmd = new SqlCommand(query, conn);
+            conn.Open();
+            cmd.ExecuteNonQuery();
+            conn.Close();
 
-                var selectedLastItemQuery = $"SELECT TOP 1 Id FROM {tableName} ORDER BY Id DESC";
-                 var selectedLastItemCmd = new SqlCommand(selectedLastItemQuery, conn);
-                 conn.Open();
-             var reader = selectedLastItemCmd.ExecuteReader();
-            while(reader.Read())
+            var selectedLastItemQuery = $"SELECT TOP 1 Id FROM {tableName} ORDER BY Id DESC";
+            var selectedLastItemCmd = new SqlCommand(selectedLastItemQuery, conn);
+            conn.Open();
+            var reader = selectedLastItemCmd.ExecuteReader();
+            while (reader.Read())
             {
                 int.TryParse(reader[0].ToString(), out res);
             }
@@ -79,40 +84,55 @@ namespace EmployeeCard.Utils
 
         }
         public static void UpdateEntry(string tableName, int id, Dictionary<string, TableField> fields)
-        {
-                var conn = new SqlConnection(Properties.Settings.Default.EmployeeBDConnectionString);
-                var updatingFieldsValues = string.Join(",", fields.Select(f =>
+            => UpdateEntry(tableName, new FieldForUpdate
+            {
+                FieldName = Constants.FieldsName.Id,
+                FieldValue = new TableField
                 {
-                    var fieldValue = string.Empty;
-                    if (f.Value.TableFieldType == TableFieldTypes.integer)
-                    {
-                        fieldValue = f.Value.TableFieldValue;
-                    }
-                    else
-                    {
-                        fieldValue = $"'{f.Value.TableFieldValue}'";
-                    }
-                    return $"{f.Key}= {fieldValue}";
-                }));
-                var query = $"UPDATE {tableName} SET {updatingFieldsValues} WHERE {Constants.FieldsName.Id} = {id}";
-                var cmd = new SqlCommand(query, conn);
-                conn.Open();
-                cmd.ExecuteNonQuery();
-                conn.Close();  
-
+                    TableFieldType = TableFieldTypes.integer,
+                    TableFieldValue = id.ToString()
+                }
+            },fields);
             
+        public static void UpdateEntry(string tableName, FieldForUpdate fieldForUpdate, Dictionary<string, TableField> fields)
+        {
+            var conn = new SqlConnection(Properties.Settings.Default.EmployeeBDConnectionString);
+            var updatingFieldsValues = string.Join(",", fields.Select(f 
+                =>$"{f.Key}={GetFieldValueByType(f.Value)}"));
+            var query = $"UPDATE {tableName} SET {updatingFieldsValues} WHERE {fieldForUpdate.FieldName} = {GetFieldValueByType(fieldForUpdate.FieldValue)}";
+            var cmd = new SqlCommand(query, conn);
+            conn.Open();
+            cmd.ExecuteNonQuery();
+            conn.Close();
+
+
+        }
+        public static void DeleteEntry(string tableName, FieldForUpdate fieldForUpdate)
+        {
+            
+            var conn = new SqlConnection(Properties.Settings.Default.EmployeeBDConnectionString);
+            var query = $"DELETE FROM {tableName} WHERE {fieldForUpdate.FieldName}={GetFieldValueByType(fieldForUpdate.FieldValue)}";
+            var cmd = new SqlCommand(query, conn);
+            conn.Open();
+            cmd.ExecuteNonQuery();
+            conn.Close();
+
         }
         public static void DeleteEntry(string tableName, int id)
+        =>  DeleteEntry(tableName, new FieldForUpdate
         {
-            
-                var conn = new SqlConnection(Properties.Settings.Default.EmployeeBDConnectionString);
-                var query = $"DELETE FROM {tableName} WHERE {Constants.FieldsName.Id}={id}";
-                var cmd = new SqlCommand(query, conn);
-                conn.Open();
-                cmd.ExecuteNonQuery();
-                conn.Close();
-                
-        }
+                FieldName = Constants.FieldsName.Id,
+                FieldValue = new TableField
+                {
+                    TableFieldType = TableFieldTypes.integer,
+                    TableFieldValue = id.ToString()
+                }
 
+        });
+        
+        private static string GetFieldValueByType(TableField tableField)
+         => tableField.TableFieldType == TableFieldTypes.integer
+            ? tableField.TableFieldValue : $"'{tableField.TableFieldValue}'";
+        
     } 
 }
