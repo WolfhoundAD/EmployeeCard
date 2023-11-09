@@ -35,7 +35,6 @@
             this.employeeBDDataSet = new EmployeeCard.EmployeeBDDataSet();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.richTextBoxAddres = new System.Windows.Forms.RichTextBox();
-            this.dataTable1BindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.editEmployeeDataSet = new EmployeeCard.EditEmployeeDataSet();
             this.label7 = new System.Windows.Forms.Label();
             this.textBoxCitizenship = new System.Windows.Forms.TextBox();
@@ -48,6 +47,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.dataTable1BindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dateTimePickerWorkExperience = new System.Windows.Forms.DateTimePicker();
             this.label10 = new System.Windows.Forms.Label();
@@ -62,8 +62,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.departmentsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.employeeBDDataSet)).BeginInit();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataTable1BindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.editEmployeeDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataTable1BindingSource)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -127,11 +127,6 @@
             this.richTextBoxAddres.Size = new System.Drawing.Size(388, 131);
             this.richTextBoxAddres.TabIndex = 12;
             this.richTextBoxAddres.Text = "";
-            // 
-            // dataTable1BindingSource
-            // 
-            this.dataTable1BindingSource.DataMember = "DataTable1";
-            this.dataTable1BindingSource.DataSource = this.editEmployeeDataSet;
             // 
             // editEmployeeDataSet
             // 
@@ -232,6 +227,11 @@
             this.label2.TabIndex = 0;
             this.label2.Text = "Фамилия:";
             this.label2.Click += new System.EventHandler(this.label2_Click);
+            // 
+            // dataTable1BindingSource
+            // 
+            this.dataTable1BindingSource.DataMember = "DataTable1";
+            this.dataTable1BindingSource.DataSource = this.editEmployeeDataSet;
             // 
             // groupBox2
             // 
@@ -351,8 +351,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.employeeBDDataSet)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataTable1BindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.editEmployeeDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataTable1BindingSource)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.ResumeLayout(false);

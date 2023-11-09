@@ -12,6 +12,8 @@ using System.Reflection;
 using System.IO;
 using WordTemplateFiller.Models;
 using WordTemplateFiller;
+using ExelExporter;
+using EmployeeCard.exportToExcelDataSetTableAdapters;
 
 namespace EmployeeCard
 {
@@ -393,6 +395,45 @@ namespace EmployeeCard
                 MessageBox.Show(ex.ToString());
             }
            
+        }
+
+        private void exportDBtoExcel_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (exportToExcelDialog.ShowDialog() == DialogResult.OK)
+                {
+                    var filePath = exportToExcelDialog.FileName;
+                    new ExcelExportManager().ExportDataSet(employeeBDDataSet, filePath);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        private void exportToExcel_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (exportToExcelDialog.ShowDialog() == DialogResult.OK)
+                {
+                    var filePath = exportToExcelDialog.FileName;
+
+                    var departmentId = 0;
+                    int.TryParse(departmentsCB.SelectedValue.ToString(), out departmentId);
+
+                    var exportTableAdapter = new ExportToExcelTableAdapter();
+                    exportTableAdapter.Fill(exportToExcelDataSet.Сотрудники, departmentId);
+
+                    new ExcelExportManager().ExportDataSet(exportToExcelDataSet, filePath);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
         }
     }
 }

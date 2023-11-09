@@ -32,3 +32,4 @@ C:\For project\EmployeeCard\EmployeeCard\bin\Debug\HtmlToOpenXml.dll
 C:\For project\EmployeeCard\EmployeeCard\bin\Debug\NS.OpenXml.Bookmark.dll
 C:\For project\EmployeeCard\EmployeeCard\bin\Debug\WordTemplateFiller.dll
 C:\For project\EmployeeCard\EmployeeCard\obj\Debug\EmployeeCard.exe.config
+C:\For project\EmployeeCard\EmployeeCard\bin\Debug\ExelExporter.dll

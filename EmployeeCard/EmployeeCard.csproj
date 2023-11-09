@@ -39,6 +39,9 @@
     <Reference Include="DocumentFormat.OpenXml">
       <HintPath>..\libs\DocumentFormat.OpenXml.dll</HintPath>
     </Reference>
+    <Reference Include="ExelExporter">
+      <HintPath>..\libs\ExelExporter.dll</HintPath>
+    </Reference>
     <Reference Include="HtmlToOpenXml">
       <HintPath>..\libs\HtmlToOpenXml.dll</HintPath>
     </Reference>
@@ -96,6 +99,14 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>EmployeeBDDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="exportToExcelDataSet.cs">
+      <DependentUpon>exportToExcelDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="exportToExcelDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>exportToExcelDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -147,6 +158,17 @@
     </None>
     <None Include="EmployeeBDDataSet.xss">
       <DependentUpon>EmployeeBDDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="exportToExcelDataSet.xsc">
+      <DependentUpon>exportToExcelDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="exportToExcelDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>exportToExcelDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="exportToExcelDataSet.xss">
+      <DependentUpon>exportToExcelDataSet.xsd</DependentUpon>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
