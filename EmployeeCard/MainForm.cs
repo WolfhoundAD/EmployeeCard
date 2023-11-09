@@ -8,15 +8,28 @@ using System.Windows.Forms;
 using System.Text;
 using System.Threading.Tasks;
 using EmployeeCard.Utils;
+using System.Reflection;
+using System.IO;
+using WordTemplateFiller.Models;
+using WordTemplateFiller;
 
 namespace EmployeeCard
 {
     public partial class MainForm : Form
     {
+        private const string templatesFolderName = "Templates";
+        private const string templateFileName = "EmployeeCardTemplate.docx";
+        private  string templatePath;
+
+        private const int lastNameColumnIdx = 2;
+        private const int firstNameColumnIdx = 3;
+        private const int patronimicColumnIdx = 4;
         public MainForm()
         {
             InitializeComponent();
-
+            var currentAssemblyPath = Assembly.GetEntryAssembly().Location;
+            var currentFolder = Path.GetDirectoryName(currentAssemblyPath);
+            templatePath = $"{currentFolder}\\{templatesFolderName}\\{templateFileName}";
         }
 
         private void MainForm_Load(object sender, EventArgs e)
@@ -295,6 +308,91 @@ namespace EmployeeCard
                 WorkExpDisplayTxt.Clear();
                 MessageBox.Show(ex.ToString());
             }
+        }
+
+        private void exportToWordBtn_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (EmployeeGV.Rows.Count == 0)
+                {
+                    MessageBox.Show("Список сотрудников пуст");
+                    return;
+                }
+                
+                if(expotToWordFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    var path = expotToWordFileDialog.FileName;
+                    var employeeGVselectedRow = EmployeeGV.SelectedRows[0];
+                    var fio = $"{employeeGVselectedRow.Cells[lastNameColumnIdx].Value} {employeeGVselectedRow.Cells[firstNameColumnIdx].Value} {employeeGVselectedRow.Cells[patronimicColumnIdx].Value}";
+                    var bmList = new List<BookMark> 
+                    {
+
+                        new BookMark
+                        {
+                            BookMarkType = BookMarkType.Text,
+                            BookMarkName = "FIO",
+                            BookMarkValue = fio
+                        },
+                         new BookMark
+                        {
+                            BookMarkType = BookMarkType.Text,
+                            BookMarkName = "CITIZENSHIP",
+                            BookMarkValue = textBox3.Text
+                        },
+                          new BookMark
+                        {
+                            BookMarkType = BookMarkType.Text,
+                            BookMarkName = "DATE",
+                            BookMarkValue = textBox2.Text
+                        },
+                           new BookMark
+                        {
+                            BookMarkType = BookMarkType.Text,
+                            BookMarkName = "AGE",
+                            BookMarkValue = textBox1.Text
+                        },
+                            new BookMark
+                        {
+                            BookMarkType = BookMarkType.Text,
+                            BookMarkName = "POST",
+                            BookMarkValue = textBox4.Text
+                        },
+                             new BookMark
+                        {
+                            BookMarkType = BookMarkType.Text,
+                            BookMarkName = "OTDEL",
+                            BookMarkValue = departmentsCB.Text
+                        },
+                              new BookMark
+                        {
+                            BookMarkType = BookMarkType.Text,
+                            BookMarkName = "WORHYEARS",
+                            BookMarkValue = WorkExpDisplayTxt.Text
+                        },
+                               new BookMark
+                        {
+                            BookMarkType = BookMarkType.Text,
+                            BookMarkName = "ADRESS",
+                            BookMarkValue = addresTxt.Text
+                        },
+                               new BookMark
+                        {
+                            BookMarkType = BookMarkType.Text,
+                            BookMarkName = "EDUCATION",
+                            BookMarkValue = educationTxt.Text
+                        }
+                    };
+
+                    new DocumentManager(templatePath, bmList).saveDocument(path);
+                }
+                
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+           
         }
     }
 }

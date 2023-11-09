@@ -94,6 +94,9 @@
             this.employeePersonalDataTableAdapter = new EmployeeCard.EmployeeBDDataSetTableAdapters.EmployeePersonalDataTableAdapter();
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.emplWorkDataTableAdapter = new EmployeeCard.EmployeeBDDataSetTableAdapters.EmplWorkDataTableAdapter();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.exportToWordBtn = new System.Windows.Forms.ToolStripButton();
+            this.expotToWordFileDialog = new System.Windows.Forms.SaveFileDialog();
             this.menuStrip1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -640,7 +643,9 @@
             this.toolStripSeparator1,
             this.editEmpl,
             this.toolStripSeparator2,
-            this.delEmpl});
+            this.delEmpl,
+            this.toolStripSeparator3,
+            this.exportToWordBtn});
             this.toolStrip1.Location = new System.Drawing.Point(0, 610);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(344, 25);
@@ -711,6 +716,25 @@
             // emplWorkDataTableAdapter
             // 
             this.emplWorkDataTableAdapter.ClearBeforeFill = true;
+            // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 25);
+            // 
+            // exportToWordBtn
+            // 
+            this.exportToWordBtn.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.exportToWordBtn.Image = ((System.Drawing.Image)(resources.GetObject("exportToWordBtn.Image")));
+            this.exportToWordBtn.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.exportToWordBtn.Name = "exportToWordBtn";
+            this.exportToWordBtn.Size = new System.Drawing.Size(97, 22);
+            this.exportToWordBtn.Text = "Экспорт в Word";
+            this.exportToWordBtn.Click += new System.EventHandler(this.exportToWordBtn_Click);
+            // 
+            // expotToWordFileDialog
+            // 
+            this.expotToWordFileDialog.Filter = "Word files | *.docx";
             // 
             // MainForm
             // 
@@ -830,6 +854,9 @@
         private System.Windows.Forms.ToolStripMenuItem удалитьВСпискеToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
         private System.Windows.Forms.TextBox WorkExpDisplayTxt;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
+        private System.Windows.Forms.ToolStripButton exportToWordBtn;
+        private System.Windows.Forms.SaveFileDialog expotToWordFileDialog;
     }
 }
 
