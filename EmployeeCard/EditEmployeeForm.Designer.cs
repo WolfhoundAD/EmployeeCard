@@ -59,6 +59,8 @@
             this.buttonCancel = new System.Windows.Forms.Button();
             this.departmentsTableAdapter = new EmployeeCard.EmployeeBDDataSetTableAdapters.DepartmentsTableAdapter();
             this.dataTable1TableAdapter = new EmployeeCard.EditEmployeeDataSetTableAdapters.DataTable1TableAdapter();
+            this.chosePhotoBtn = new System.Windows.Forms.Button();
+            this.choseImageDialog = new System.Windows.Forms.OpenFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.departmentsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.employeeBDDataSet)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -329,11 +331,27 @@
             // 
             this.dataTable1TableAdapter.ClearBeforeFill = true;
             // 
+            // chosePhotoBtn
+            // 
+            this.chosePhotoBtn.Location = new System.Drawing.Point(351, 454);
+            this.chosePhotoBtn.Name = "chosePhotoBtn";
+            this.chosePhotoBtn.Size = new System.Drawing.Size(145, 25);
+            this.chosePhotoBtn.TabIndex = 6;
+            this.chosePhotoBtn.Text = "Выбрать фотографию";
+            this.chosePhotoBtn.UseVisualStyleBackColor = true;
+            this.chosePhotoBtn.Click += new System.EventHandler(this.chosePhotoBtn_Click);
+            // 
+            // choseImageDialog
+            // 
+            this.choseImageDialog.FileName = "openFileDialog1";
+            this.choseImageDialog.Filter = "Jpg images |*.jpg";
+            // 
             // EditEmployeeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(834, 491);
+            this.Controls.Add(this.chosePhotoBtn);
             this.Controls.Add(this.buttonCancel);
             this.Controls.Add(this.buttonSave);
             this.Controls.Add(this.groupBox2);
@@ -392,5 +410,7 @@
         private System.Windows.Forms.BindingSource dataTable1BindingSource;
         private EditEmployeeDataSet editEmployeeDataSet;
         private EditEmployeeDataSetTableAdapters.DataTable1TableAdapter dataTable1TableAdapter;
+        private System.Windows.Forms.Button chosePhotoBtn;
+        private System.Windows.Forms.OpenFileDialog choseImageDialog;
     }
 }

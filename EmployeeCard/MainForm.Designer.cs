@@ -58,12 +58,15 @@
             this.fKEmployeesDepartmentsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.departmentsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.employeeBDDataSet = new EmployeeCard.EmployeeBDDataSet();
+            this.photoSeparatorTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
+            this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.textBox3 = new System.Windows.Forms.TextBox();
-            this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
             this.groupBox5PersonalData = new System.Windows.Forms.GroupBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.photoPictureBox = new System.Windows.Forms.PictureBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.groupBox10 = new System.Windows.Forms.GroupBox();
@@ -92,6 +95,8 @@
             this.delEmpl = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.exportToWordBtn = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
+            this.exportToExcel = new System.Windows.Forms.ToolStripButton();
             this.employeeBDBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.departmentsTableAdapter = new EmployeeCard.EmployeeBDDataSetTableAdapters.DepartmentsTableAdapter();
             this.employeesBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -103,8 +108,6 @@
             this.exportToExcelDialog = new System.Windows.Forms.SaveFileDialog();
             this.exportToExcelBendingSource = new System.Windows.Forms.BindingSource(this.components);
             this.exportToExcelDataSet = new EmployeeCard.exportToExcelDataSet();
-            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
-            this.exportToExcel = new System.Windows.Forms.ToolStripButton();
             this.menuStrip1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -116,9 +119,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.fKEmployeesDepartmentsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.departmentsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.employeeBDDataSet)).BeginInit();
+            this.photoSeparatorTableLayoutPanel.SuspendLayout();
+            this.tableLayoutPanel5.SuspendLayout();
             this.groupBox6.SuspendLayout();
-            this.groupBox5.SuspendLayout();
             this.groupBox5PersonalData.SuspendLayout();
+            this.groupBox5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.photoPictureBox)).BeginInit();
             this.groupBox4.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
             this.groupBox10.SuspendLayout();
@@ -322,18 +328,13 @@
             // 
             this.tableLayoutPanel4PersonalData.ColumnCount = 1;
             this.tableLayoutPanel4PersonalData.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel4PersonalData.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel4PersonalData.Controls.Add(this.groupBox7, 0, 3);
-            this.tableLayoutPanel4PersonalData.Controls.Add(this.groupBox6, 0, 2);
-            this.tableLayoutPanel4PersonalData.Controls.Add(this.groupBox5, 0, 1);
-            this.tableLayoutPanel4PersonalData.Controls.Add(this.groupBox5PersonalData, 0, 0);
+            this.tableLayoutPanel4PersonalData.Controls.Add(this.groupBox7, 0, 1);
+            this.tableLayoutPanel4PersonalData.Controls.Add(this.photoSeparatorTableLayoutPanel, 0, 0);
             this.tableLayoutPanel4PersonalData.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel4PersonalData.Location = new System.Drawing.Point(3, 16);
             this.tableLayoutPanel4PersonalData.Name = "tableLayoutPanel4PersonalData";
-            this.tableLayoutPanel4PersonalData.RowCount = 4;
-            this.tableLayoutPanel4PersonalData.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
-            this.tableLayoutPanel4PersonalData.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
-            this.tableLayoutPanel4PersonalData.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
+            this.tableLayoutPanel4PersonalData.RowCount = 2;
+            this.tableLayoutPanel4PersonalData.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 160F));
             this.tableLayoutPanel4PersonalData.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel4PersonalData.Size = new System.Drawing.Size(840, 295);
             this.tableLayoutPanel4PersonalData.TabIndex = 0;
@@ -342,9 +343,9 @@
             // 
             this.groupBox7.Controls.Add(this.addresTxt);
             this.groupBox7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox7.Location = new System.Drawing.Point(3, 153);
+            this.groupBox7.Location = new System.Drawing.Point(3, 163);
             this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(834, 139);
+            this.groupBox7.Size = new System.Drawing.Size(834, 129);
             this.groupBox7.TabIndex = 3;
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "Адрес регистрации:";
@@ -356,7 +357,7 @@
             this.addresTxt.Location = new System.Drawing.Point(3, 16);
             this.addresTxt.Name = "addresTxt";
             this.addresTxt.ReadOnly = true;
-            this.addresTxt.Size = new System.Drawing.Size(828, 120);
+            this.addresTxt.Size = new System.Drawing.Size(828, 110);
             this.addresTxt.TabIndex = 0;
             this.addresTxt.Text = "";
             // 
@@ -380,13 +381,46 @@
             this.employeeBDDataSet.DataSetName = "EmployeeBDDataSet";
             this.employeeBDDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
+            // photoSeparatorTableLayoutPanel
+            // 
+            this.photoSeparatorTableLayoutPanel.ColumnCount = 2;
+            this.photoSeparatorTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
+            this.photoSeparatorTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.photoSeparatorTableLayoutPanel.Controls.Add(this.tableLayoutPanel5, 1, 0);
+            this.photoSeparatorTableLayoutPanel.Controls.Add(this.photoPictureBox, 0, 0);
+            this.photoSeparatorTableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.photoSeparatorTableLayoutPanel.Location = new System.Drawing.Point(3, 3);
+            this.photoSeparatorTableLayoutPanel.Name = "photoSeparatorTableLayoutPanel";
+            this.photoSeparatorTableLayoutPanel.RowCount = 1;
+            this.photoSeparatorTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.photoSeparatorTableLayoutPanel.Size = new System.Drawing.Size(834, 154);
+            this.photoSeparatorTableLayoutPanel.TabIndex = 4;
+            // 
+            // tableLayoutPanel5
+            // 
+            this.tableLayoutPanel5.ColumnCount = 1;
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel5.Controls.Add(this.groupBox6, 0, 2);
+            this.tableLayoutPanel5.Controls.Add(this.groupBox5PersonalData, 0, 0);
+            this.tableLayoutPanel5.Controls.Add(this.groupBox5, 0, 1);
+            this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel5.Location = new System.Drawing.Point(153, 3);
+            this.tableLayoutPanel5.Name = "tableLayoutPanel5";
+            this.tableLayoutPanel5.RowCount = 3;
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(678, 148);
+            this.tableLayoutPanel5.TabIndex = 0;
+            // 
             // groupBox6
             // 
             this.groupBox6.Controls.Add(this.textBox3);
             this.groupBox6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox6.Location = new System.Drawing.Point(3, 103);
             this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(834, 44);
+            this.groupBox6.Size = new System.Drawing.Size(672, 42);
             this.groupBox6.TabIndex = 2;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Гражданство:";
@@ -398,29 +432,8 @@
             this.textBox3.Location = new System.Drawing.Point(3, 16);
             this.textBox3.Name = "textBox3";
             this.textBox3.ReadOnly = true;
-            this.textBox3.Size = new System.Drawing.Size(828, 20);
+            this.textBox3.Size = new System.Drawing.Size(666, 20);
             this.textBox3.TabIndex = 0;
-            // 
-            // groupBox5
-            // 
-            this.groupBox5.Controls.Add(this.textBox2);
-            this.groupBox5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox5.Location = new System.Drawing.Point(3, 53);
-            this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(834, 44);
-            this.groupBox5.TabIndex = 1;
-            this.groupBox5.TabStop = false;
-            this.groupBox5.Text = "Дата рождения:";
-            // 
-            // textBox2
-            // 
-            this.textBox2.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.fKEmployeePersonalDataEmployeesBindingSource, "BirthDay", true));
-            this.textBox2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBox2.Location = new System.Drawing.Point(3, 16);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.ReadOnly = true;
-            this.textBox2.Size = new System.Drawing.Size(828, 20);
-            this.textBox2.TabIndex = 0;
             // 
             // groupBox5PersonalData
             // 
@@ -428,7 +441,7 @@
             this.groupBox5PersonalData.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox5PersonalData.Location = new System.Drawing.Point(3, 3);
             this.groupBox5PersonalData.Name = "groupBox5PersonalData";
-            this.groupBox5PersonalData.Size = new System.Drawing.Size(834, 44);
+            this.groupBox5PersonalData.Size = new System.Drawing.Size(672, 44);
             this.groupBox5PersonalData.TabIndex = 0;
             this.groupBox5PersonalData.TabStop = false;
             this.groupBox5PersonalData.Text = "Возраст:";
@@ -440,8 +453,40 @@
             this.textBox1.Location = new System.Drawing.Point(3, 16);
             this.textBox1.Name = "textBox1";
             this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(828, 20);
+            this.textBox1.Size = new System.Drawing.Size(666, 20);
             this.textBox1.TabIndex = 0;
+            // 
+            // groupBox5
+            // 
+            this.groupBox5.Controls.Add(this.textBox2);
+            this.groupBox5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox5.Location = new System.Drawing.Point(3, 53);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(672, 44);
+            this.groupBox5.TabIndex = 1;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "Дата рождения:";
+            // 
+            // textBox2
+            // 
+            this.textBox2.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.fKEmployeePersonalDataEmployeesBindingSource, "BirthDay", true));
+            this.textBox2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.textBox2.Location = new System.Drawing.Point(3, 16);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.ReadOnly = true;
+            this.textBox2.Size = new System.Drawing.Size(666, 20);
+            this.textBox2.TabIndex = 0;
+            // 
+            // photoPictureBox
+            // 
+            this.photoPictureBox.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.photoPictureBox.DataBindings.Add(new System.Windows.Forms.Binding("Image", this.fKEmployeePersonalDataEmployeesBindingSource, "Photo", true));
+            this.photoPictureBox.Location = new System.Drawing.Point(3, 3);
+            this.photoPictureBox.Name = "photoPictureBox";
+            this.photoPictureBox.Size = new System.Drawing.Size(144, 148);
+            this.photoPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.photoPictureBox.TabIndex = 1;
+            this.photoPictureBox.TabStop = false;
             // 
             // groupBox4
             // 
@@ -739,6 +784,21 @@
             this.exportToWordBtn.Text = "Экспорт в Word";
             this.exportToWordBtn.Click += new System.EventHandler(this.exportToWordBtn_Click);
             // 
+            // toolStripSeparator4
+            // 
+            this.toolStripSeparator4.Name = "toolStripSeparator4";
+            this.toolStripSeparator4.Size = new System.Drawing.Size(6, 25);
+            // 
+            // exportToExcel
+            // 
+            this.exportToExcel.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.exportToExcel.Image = ((System.Drawing.Image)(resources.GetObject("exportToExcel.Image")));
+            this.exportToExcel.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.exportToExcel.Name = "exportToExcel";
+            this.exportToExcel.Size = new System.Drawing.Size(95, 22);
+            this.exportToExcel.Text = "Экспорт в Excel";
+            this.exportToExcel.Click += new System.EventHandler(this.exportToExcel_Click);
+            // 
             // departmentsTableAdapter
             // 
             this.departmentsTableAdapter.ClearBeforeFill = true;
@@ -782,21 +842,6 @@
             this.exportToExcelDataSet.DataSetName = "exportToExcelDataSet";
             this.exportToExcelDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
-            // toolStripSeparator4
-            // 
-            this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(6, 25);
-            // 
-            // exportToExcel
-            // 
-            this.exportToExcel.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.exportToExcel.Image = ((System.Drawing.Image)(resources.GetObject("exportToExcel.Image")));
-            this.exportToExcel.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.exportToExcel.Name = "exportToExcel";
-            this.exportToExcel.Size = new System.Drawing.Size(95, 22);
-            this.exportToExcel.Text = "Экспорт в Excel";
-            this.exportToExcel.Click += new System.EventHandler(this.exportToExcel_Click);
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -821,12 +866,15 @@
             ((System.ComponentModel.ISupportInitialize)(this.fKEmployeesDepartmentsBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.departmentsBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.employeeBDDataSet)).EndInit();
+            this.photoSeparatorTableLayoutPanel.ResumeLayout(false);
+            this.tableLayoutPanel5.ResumeLayout(false);
             this.groupBox6.ResumeLayout(false);
             this.groupBox6.PerformLayout();
-            this.groupBox5.ResumeLayout(false);
-            this.groupBox5.PerformLayout();
             this.groupBox5PersonalData.ResumeLayout(false);
             this.groupBox5PersonalData.PerformLayout();
+            this.groupBox5.ResumeLayout(false);
+            this.groupBox5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.photoPictureBox)).EndInit();
             this.groupBox4.ResumeLayout(false);
             this.tableLayoutPanel4.ResumeLayout(false);
             this.groupBox10.ResumeLayout(false);
@@ -928,6 +976,9 @@
         private exportToExcelDataSet exportToExcelDataSet;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
         private System.Windows.Forms.ToolStripButton exportToExcel;
+        private System.Windows.Forms.TableLayoutPanel photoSeparatorTableLayoutPanel;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
+        private System.Windows.Forms.PictureBox photoPictureBox;
     }
 }
 
