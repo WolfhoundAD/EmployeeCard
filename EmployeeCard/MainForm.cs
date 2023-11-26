@@ -14,6 +14,11 @@ using WordTemplateFiller.Models;
 using WordTemplateFiller;
 using ExelExporter;
 using EmployeeCard.exportToExcelDataSetTableAdapters;
+using System.Diagnostics;
+using DocumentFormat.OpenXml.Packaging;
+using DocumentFormat.OpenXml.Spreadsheet;
+using EmployeeCard.Models;
+using System.Xml.Serialization;
 
 namespace EmployeeCard
 {
@@ -434,6 +439,174 @@ namespace EmployeeCard
             {
                 MessageBox.Show(ex.ToString());
             }
+        }
+
+        private void imageNameHidenField_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                var currentAssemblyPath = Assembly.GetEntryAssembly().Location;
+                var currentFolder = Path.GetDirectoryName(currentAssemblyPath);
+                var imageName = ((TextBox)sender).Text;
+                fotoPictureBox_2.ImageLocation = !string.IsNullOrEmpty(imageName) ? $"{currentFolder}\\ImgData\\{imageName}" : null;
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+           
+        }
+
+        private void openCardBtn_Click(object sender, EventArgs e)
+        {
+            try
+            {
+
+                var currentAssemblyPath = Assembly.GetEntryAssembly().Location;
+                var currentFolder = Path.GetDirectoryName(currentAssemblyPath);
+                if(!string.IsNullOrEmpty(cardField.Text))
+                {
+                    var path = $"{currentFolder}\\CardsData\\{cardField.Text}";
+                    Process.Start(new ProcessStartInfo(path));
+                }
+               
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        private void excelImportBtn_Click(object sender, EventArgs e)
+        {
+            try
+            {
+
+            
+            var departmentId = 0;
+           if (int.TryParse(departmentsCB.SelectedValue.ToString(), out departmentId))
+            {
+
+            
+            if (excelImportFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                var data = new List<List<string>>();
+                using (var fs = new FileStream(excelImportFileDialog.FileName, FileMode.Open, FileAccess.Read, FileShare.ReadWrite))
+                { 
+                using (var doc = SpreadsheetDocument.Open(fs, false))
+                {
+                        var workbookPart = doc.WorkbookPart;
+                        var worksheetPart = workbookPart.WorksheetParts.FirstOrDefault(wsp => wsp.Uri.OriginalString.IndexOf("sheet1") != -1);
+                        var sheetData = worksheetPart?.Worksheet.Elements<SheetData>().FirstOrDefault();
+
+                        foreach (var row in sheetData.Elements<Row>())
+                        {
+                            var rowData = new List<string>();
+
+                            foreach (var cell in row.Elements<Cell>())
+                            {
+                                    var value = cell.InnerText;
+
+                                    if (cell.DataType != null && cell.DataType.Value == CellValues.SharedString)
+                                    {
+                                        int index = int.Parse(value);
+                                        value = workbookPart.SharedStringTablePart.SharedStringTable
+                                            .Elements<SharedStringItem>().ElementAt(index).InnerText;
+                                    }
+                                    rowData.Add(value);
+                            }
+                            data.Add(rowData);
+                        }
+                }
+                }
+
+                foreach (var dataRow in data)
+                {
+                    AddEmployeeHelper.Add(new EmployeeDto
+                    {
+                        
+                        Address = dataRow[Constants.ExcelCells.J],
+                        Age = dataRow[Constants.ExcelCells.D],
+                        BirthDay = dataRow[Constants.ExcelCells.E],
+                        Citizenship = dataRow[Constants.ExcelCells.H],
+                        DepartmentId = departmentId.ToString(),
+                        Education = dataRow[Constants.ExcelCells.I],
+                        EmployeeId = string.Empty,
+                        FirstName = dataRow[Constants.ExcelCells.B],
+                        LastName = dataRow[Constants.ExcelCells.A],
+                        MiddleName = dataRow[Constants.ExcelCells.C],
+                        Post = dataRow[Constants.ExcelCells.F],
+                        WorkExperience = dataRow[Constants.ExcelCells.G]
+                    }) ;
+                }
+                    RefreshData();
+            }
+        }
+           else
+            {
+                MessageBox.Show("Не удалось получить идентефиктор отдела!");
+            }
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+    }
+
+        private void xmlExportBtn_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (xmlSaveFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    var filePath = xmlSaveFileDialog.FileName;
+
+                    var departmentId = 0;
+                    int.TryParse(departmentsCB.SelectedValue.ToString(), out departmentId);
+
+                    var exportTableAdapter = new ExportToExcelTableAdapter();
+                    exportTableAdapter.Fill(exportToExcelDataSet.Сотрудники, departmentId);
+
+                    var employeesList = exportToExcelDataSet.Сотрудники.Select(emp => {
+                        return new EmployeeToXml
+                        {
+                            Address = emp.Адрес,
+                            Age = emp.Возраст.ToString(),
+                            BirthDay = emp.Дата_рождения,
+                            Citizenship = emp.Гражданство,
+                            Education = emp.Образование,
+                            FirstName = emp.Имя,
+                            LastName = emp.Фамилия,
+                            MidleName = emp.Отчество,
+                            Post = emp.Должность,
+                            WorkExperience = emp.Стаж
+
+                        };
+                    }).ToList();
+
+                    var employeesToXmlList = new EmployeeToXmlList
+                    {
+                        Items = employeesList
+
+                    };
+
+                    var serializer = new XmlSerializer(typeof(EmployeeToXmlList));
+
+                    using (var writer = new StreamWriter(filePath))
+                    {
+                        serializer.Serialize(writer, employeesToXmlList);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        private void xmlImportBtn_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

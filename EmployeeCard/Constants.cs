@@ -56,6 +56,7 @@ namespace EmployeeCard
                 public const string BirthDay = "BirthDay";
                 public const string Citizenship = "Citizenship";
                 public const string Address = "Address";
+                public const string PhotoFileName = "PhotoFileName";
 
             }
             public static class EmplWorkDataTable
@@ -64,8 +65,23 @@ namespace EmployeeCard
                 public const string Post = "Post";
                 public const string Education = "Education";
                 public const string WorkExperience = "WorkExperience";
+                public const string WorkCard = "WorkCard";
 
             }
+        }
+        public static class ExcelCells
+        {
+            public static int A = 0;
+            public static int B = 1;
+            public static int C = 2;
+            public static int D = 3;
+            public static int E = 4;
+            public static int F = 5;
+            public static int G = 6;
+            public static int H = 7;
+            public static int I = 8;
+            public static int J = 9;
+
         }
     }
 

@@ -66,17 +66,20 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
-            this.photoPictureBox = new System.Windows.Forms.PictureBox();
+            this.fotoPictureBox_2 = new System.Windows.Forms.PictureBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.groupBox10 = new System.Windows.Forms.GroupBox();
             this.educationTxt = new System.Windows.Forms.RichTextBox();
             this.fKEmplWorkDataEmployeesBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.imageNameHidenField = new System.Windows.Forms.TextBox();
             this.groupBox9 = new System.Windows.Forms.GroupBox();
             this.WorkExpDisplayTxt = new System.Windows.Forms.TextBox();
             this.textBox5 = new System.Windows.Forms.TextBox();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
             this.textBox4 = new System.Windows.Forms.TextBox();
+            this.groupBox11 = new System.Windows.Forms.GroupBox();
+            this.cardField = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.departmentsCB = new System.Windows.Forms.ComboBox();
@@ -87,6 +90,7 @@
             this.lastNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.firstNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.midleNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.photoPictureBox = new System.Windows.Forms.PictureBox();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.addEmpl = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
@@ -97,6 +101,10 @@
             this.exportToWordBtn = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.exportToExcel = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
+            this.openCardBtn = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
+            this.excelImportBtn = new System.Windows.Forms.ToolStripButton();
             this.employeeBDBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.departmentsTableAdapter = new EmployeeCard.EmployeeBDDataSetTableAdapters.DepartmentsTableAdapter();
             this.employeesBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -108,6 +116,12 @@
             this.exportToExcelDialog = new System.Windows.Forms.SaveFileDialog();
             this.exportToExcelBendingSource = new System.Windows.Forms.BindingSource(this.components);
             this.exportToExcelDataSet = new EmployeeCard.exportToExcelDataSet();
+            this.excelImportFileDialog = new System.Windows.Forms.OpenFileDialog();
+            this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
+            this.xmlExportBtn = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator8 = new System.Windows.Forms.ToolStripSeparator();
+            this.xmlImportBtn = new System.Windows.Forms.ToolStripButton();
+            this.xmlSaveFileDialog = new System.Windows.Forms.SaveFileDialog();
             this.menuStrip1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -124,17 +138,19 @@
             this.groupBox6.SuspendLayout();
             this.groupBox5PersonalData.SuspendLayout();
             this.groupBox5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.photoPictureBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fotoPictureBox_2)).BeginInit();
             this.groupBox4.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
             this.groupBox10.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.fKEmplWorkDataEmployeesBindingSource)).BeginInit();
             this.groupBox9.SuspendLayout();
             this.groupBox8.SuspendLayout();
+            this.groupBox11.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBoxEmpl.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.EmployeeGV)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.photoPictureBox)).BeginInit();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.employeeBDBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.employeesBindingSource)).BeginInit();
@@ -145,12 +161,14 @@
             // 
             // menuStrip1
             // 
+            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.файлToolStripMenuItem,
             this.departamentsTSM});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.MinimumSize = new System.Drawing.Size(1084, 24);
             this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
             this.menuStrip1.Size = new System.Drawing.Size(1314, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
@@ -352,6 +370,7 @@
             // 
             // addresTxt
             // 
+            this.addresTxt.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.addresTxt.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.fKEmployeePersonalDataEmployeesBindingSource, "Address", true));
             this.addresTxt.Dock = System.Windows.Forms.DockStyle.Fill;
             this.addresTxt.Location = new System.Drawing.Point(3, 16);
@@ -387,7 +406,7 @@
             this.photoSeparatorTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
             this.photoSeparatorTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.photoSeparatorTableLayoutPanel.Controls.Add(this.tableLayoutPanel5, 1, 0);
-            this.photoSeparatorTableLayoutPanel.Controls.Add(this.photoPictureBox, 0, 0);
+            this.photoSeparatorTableLayoutPanel.Controls.Add(this.fotoPictureBox_2, 0, 0);
             this.photoSeparatorTableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.photoSeparatorTableLayoutPanel.Location = new System.Drawing.Point(3, 3);
             this.photoSeparatorTableLayoutPanel.Name = "photoSeparatorTableLayoutPanel";
@@ -427,6 +446,7 @@
             // 
             // textBox3
             // 
+            this.textBox3.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.textBox3.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.fKEmployeePersonalDataEmployeesBindingSource, "Citizenship", true));
             this.textBox3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.textBox3.Location = new System.Drawing.Point(3, 16);
@@ -448,6 +468,7 @@
             // 
             // textBox1
             // 
+            this.textBox1.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.textBox1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.fKEmployeePersonalDataEmployeesBindingSource, "Age", true));
             this.textBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.textBox1.Location = new System.Drawing.Point(3, 16);
@@ -469,6 +490,7 @@
             // 
             // textBox2
             // 
+            this.textBox2.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.textBox2.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.fKEmployeePersonalDataEmployeesBindingSource, "BirthDay", true));
             this.textBox2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.textBox2.Location = new System.Drawing.Point(3, 16);
@@ -477,16 +499,16 @@
             this.textBox2.Size = new System.Drawing.Size(666, 20);
             this.textBox2.TabIndex = 0;
             // 
-            // photoPictureBox
+            // fotoPictureBox_2
             // 
-            this.photoPictureBox.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.photoPictureBox.DataBindings.Add(new System.Windows.Forms.Binding("Image", this.fKEmployeePersonalDataEmployeesBindingSource, "Photo", true));
-            this.photoPictureBox.Location = new System.Drawing.Point(3, 3);
-            this.photoPictureBox.Name = "photoPictureBox";
-            this.photoPictureBox.Size = new System.Drawing.Size(144, 148);
-            this.photoPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.photoPictureBox.TabIndex = 1;
-            this.photoPictureBox.TabStop = false;
+            this.fotoPictureBox_2.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.fotoPictureBox_2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.fotoPictureBox_2.Location = new System.Drawing.Point(3, 3);
+            this.fotoPictureBox_2.Name = "fotoPictureBox_2";
+            this.fotoPictureBox_2.Size = new System.Drawing.Size(144, 148);
+            this.fotoPictureBox_2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.fotoPictureBox_2.TabIndex = 1;
+            this.fotoPictureBox_2.TabStop = false;
             // 
             // groupBox4
             // 
@@ -506,38 +528,40 @@
             this.tableLayoutPanel4.Controls.Add(this.groupBox10, 0, 1);
             this.tableLayoutPanel4.Controls.Add(this.groupBox9, 0, 1);
             this.tableLayoutPanel4.Controls.Add(this.groupBox8, 0, 0);
+            this.tableLayoutPanel4.Controls.Add(this.groupBox11, 0, 3);
             this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel4.Location = new System.Drawing.Point(3, 16);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
-            this.tableLayoutPanel4.RowCount = 2;
+            this.tableLayoutPanel4.RowCount = 4;
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
-            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel4.Size = new System.Drawing.Size(840, 296);
             this.tableLayoutPanel4.TabIndex = 0;
             // 
             // groupBox10
             // 
             this.groupBox10.Controls.Add(this.educationTxt);
+            this.groupBox10.Controls.Add(this.imageNameHidenField);
             this.groupBox10.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox10.Enabled = false;
-            this.groupBox10.Location = new System.Drawing.Point(3, 53);
+            this.groupBox10.Location = new System.Drawing.Point(3, 103);
             this.groupBox10.Name = "groupBox10";
-            this.groupBox10.Size = new System.Drawing.Size(834, 190);
+            this.groupBox10.Size = new System.Drawing.Size(834, 140);
             this.groupBox10.TabIndex = 4;
             this.groupBox10.TabStop = false;
             this.groupBox10.Text = "Образование:";
             // 
             // educationTxt
             // 
-            this.educationTxt.BackColor = System.Drawing.SystemColors.Control;
+            this.educationTxt.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.educationTxt.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.fKEmplWorkDataEmployeesBindingSource, "Education", true));
             this.educationTxt.Dock = System.Windows.Forms.DockStyle.Fill;
             this.educationTxt.Location = new System.Drawing.Point(3, 16);
             this.educationTxt.Name = "educationTxt";
             this.educationTxt.ReadOnly = true;
-            this.educationTxt.Size = new System.Drawing.Size(828, 171);
+            this.educationTxt.Size = new System.Drawing.Size(828, 121);
             this.educationTxt.TabIndex = 0;
             this.educationTxt.Text = "";
             // 
@@ -546,12 +570,21 @@
             this.fKEmplWorkDataEmployeesBindingSource.DataMember = "FK_EmplWorkData_Employees";
             this.fKEmplWorkDataEmployeesBindingSource.DataSource = this.fKEmployeesDepartmentsBindingSource;
             // 
+            // imageNameHidenField
+            // 
+            this.imageNameHidenField.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.fKEmployeePersonalDataEmployeesBindingSource, "PhotoFileName", true));
+            this.imageNameHidenField.Location = new System.Drawing.Point(7, 20);
+            this.imageNameHidenField.Name = "imageNameHidenField";
+            this.imageNameHidenField.Size = new System.Drawing.Size(1, 20);
+            this.imageNameHidenField.TabIndex = 1;
+            this.imageNameHidenField.TextChanged += new System.EventHandler(this.imageNameHidenField_TextChanged);
+            // 
             // groupBox9
             // 
             this.groupBox9.Controls.Add(this.WorkExpDisplayTxt);
             this.groupBox9.Controls.Add(this.textBox5);
             this.groupBox9.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox9.Location = new System.Drawing.Point(3, 249);
+            this.groupBox9.Location = new System.Drawing.Point(3, 53);
             this.groupBox9.Name = "groupBox9";
             this.groupBox9.Size = new System.Drawing.Size(834, 44);
             this.groupBox9.TabIndex = 2;
@@ -560,6 +593,7 @@
             // 
             // WorkExpDisplayTxt
             // 
+            this.WorkExpDisplayTxt.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.WorkExpDisplayTxt.Location = new System.Drawing.Point(120, 16);
             this.WorkExpDisplayTxt.Name = "WorkExpDisplayTxt";
             this.WorkExpDisplayTxt.ReadOnly = true;
@@ -568,6 +602,7 @@
             // 
             // textBox5
             // 
+            this.textBox5.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.textBox5.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.fKEmplWorkDataEmployeesBindingSource, "WorkExperience", true));
             this.textBox5.Location = new System.Drawing.Point(3, 16);
             this.textBox5.Name = "textBox5";
@@ -589,6 +624,7 @@
             // 
             // textBox4
             // 
+            this.textBox4.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.textBox4.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.fKEmplWorkDataEmployeesBindingSource, "Post", true));
             this.textBox4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.textBox4.Location = new System.Drawing.Point(3, 16);
@@ -596,6 +632,28 @@
             this.textBox4.ReadOnly = true;
             this.textBox4.Size = new System.Drawing.Size(828, 20);
             this.textBox4.TabIndex = 0;
+            // 
+            // groupBox11
+            // 
+            this.groupBox11.Controls.Add(this.cardField);
+            this.groupBox11.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox11.Location = new System.Drawing.Point(3, 249);
+            this.groupBox11.Name = "groupBox11";
+            this.groupBox11.Size = new System.Drawing.Size(834, 44);
+            this.groupBox11.TabIndex = 5;
+            this.groupBox11.TabStop = false;
+            this.groupBox11.Text = "Карточка сотрудника";
+            // 
+            // cardField
+            // 
+            this.cardField.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.cardField.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.fKEmplWorkDataEmployeesBindingSource, "WorkCard", true));
+            this.cardField.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cardField.Location = new System.Drawing.Point(3, 16);
+            this.cardField.Name = "cardField";
+            this.cardField.ReadOnly = true;
+            this.cardField.Size = new System.Drawing.Size(828, 20);
+            this.cardField.TabIndex = 0;
             // 
             // tableLayoutPanel2
             // 
@@ -642,6 +700,7 @@
             // groupBoxEmpl
             // 
             this.groupBoxEmpl.Controls.Add(this.EmployeeGV);
+            this.groupBoxEmpl.Controls.Add(this.photoPictureBox);
             this.groupBoxEmpl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBoxEmpl.Location = new System.Drawing.Point(3, 53);
             this.groupBoxEmpl.Name = "groupBoxEmpl";
@@ -669,6 +728,7 @@
             this.EmployeeGV.Name = "EmployeeGV";
             this.EmployeeGV.ReadOnly = true;
             this.EmployeeGV.RowHeadersVisible = false;
+            this.EmployeeGV.RowHeadersWidth = 51;
             this.EmployeeGV.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.EmployeeGV.Size = new System.Drawing.Size(432, 535);
             this.EmployeeGV.TabIndex = 0;
@@ -677,42 +737,63 @@
             // 
             this.idDataGridViewTextBoxColumn.DataPropertyName = "Id";
             this.idDataGridViewTextBoxColumn.HeaderText = "Id";
+            this.idDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
             this.idDataGridViewTextBoxColumn.ReadOnly = true;
             this.idDataGridViewTextBoxColumn.Visible = false;
+            this.idDataGridViewTextBoxColumn.Width = 125;
             // 
             // departmentIdDataGridViewTextBoxColumn
             // 
             this.departmentIdDataGridViewTextBoxColumn.DataPropertyName = "DepartmentId";
             this.departmentIdDataGridViewTextBoxColumn.HeaderText = "DepartmentId";
+            this.departmentIdDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.departmentIdDataGridViewTextBoxColumn.Name = "departmentIdDataGridViewTextBoxColumn";
             this.departmentIdDataGridViewTextBoxColumn.ReadOnly = true;
             this.departmentIdDataGridViewTextBoxColumn.Visible = false;
+            this.departmentIdDataGridViewTextBoxColumn.Width = 125;
             // 
             // lastNameDataGridViewTextBoxColumn
             // 
             this.lastNameDataGridViewTextBoxColumn.DataPropertyName = "LastName";
             this.lastNameDataGridViewTextBoxColumn.HeaderText = "Фамилия";
+            this.lastNameDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.lastNameDataGridViewTextBoxColumn.Name = "lastNameDataGridViewTextBoxColumn";
             this.lastNameDataGridViewTextBoxColumn.ReadOnly = true;
+            this.lastNameDataGridViewTextBoxColumn.Width = 125;
             // 
             // firstNameDataGridViewTextBoxColumn
             // 
             this.firstNameDataGridViewTextBoxColumn.DataPropertyName = "FirstName";
             this.firstNameDataGridViewTextBoxColumn.HeaderText = "Имя";
+            this.firstNameDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.firstNameDataGridViewTextBoxColumn.Name = "firstNameDataGridViewTextBoxColumn";
             this.firstNameDataGridViewTextBoxColumn.ReadOnly = true;
+            this.firstNameDataGridViewTextBoxColumn.Width = 125;
             // 
             // midleNameDataGridViewTextBoxColumn
             // 
             this.midleNameDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.midleNameDataGridViewTextBoxColumn.DataPropertyName = "MidleName";
             this.midleNameDataGridViewTextBoxColumn.HeaderText = "Отчество";
+            this.midleNameDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.midleNameDataGridViewTextBoxColumn.Name = "midleNameDataGridViewTextBoxColumn";
             this.midleNameDataGridViewTextBoxColumn.ReadOnly = true;
             // 
+            // photoPictureBox
+            // 
+            this.photoPictureBox.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.photoPictureBox.DataBindings.Add(new System.Windows.Forms.Binding("Image", this.fKEmployeePersonalDataEmployeesBindingSource, "Photo", true));
+            this.photoPictureBox.Location = new System.Drawing.Point(24546, 107);
+            this.photoPictureBox.Name = "photoPictureBox";
+            this.photoPictureBox.Size = new System.Drawing.Size(54, 47);
+            this.photoPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.photoPictureBox.TabIndex = 1;
+            this.photoPictureBox.TabStop = false;
+            // 
             // toolStrip1
             // 
+            this.toolStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.addEmpl,
             this.toolStripSeparator1,
@@ -722,7 +803,15 @@
             this.toolStripSeparator3,
             this.exportToWordBtn,
             this.toolStripSeparator4,
-            this.exportToExcel});
+            this.exportToExcel,
+            this.toolStripSeparator5,
+            this.openCardBtn,
+            this.toolStripSeparator6,
+            this.excelImportBtn,
+            this.toolStripSeparator7,
+            this.xmlExportBtn,
+            this.toolStripSeparator8,
+            this.xmlImportBtn});
             this.toolStrip1.Location = new System.Drawing.Point(0, 610);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(444, 25);
@@ -799,6 +888,36 @@
             this.exportToExcel.Text = "Экспорт в Excel";
             this.exportToExcel.Click += new System.EventHandler(this.exportToExcel_Click);
             // 
+            // toolStripSeparator5
+            // 
+            this.toolStripSeparator5.Name = "toolStripSeparator5";
+            this.toolStripSeparator5.Size = new System.Drawing.Size(6, 25);
+            // 
+            // openCardBtn
+            // 
+            this.openCardBtn.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.openCardBtn.Image = ((System.Drawing.Image)(resources.GetObject("openCardBtn.Image")));
+            this.openCardBtn.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.openCardBtn.Name = "openCardBtn";
+            this.openCardBtn.Size = new System.Drawing.Size(177, 19);
+            this.openCardBtn.Text = "Открыть карточку сотрудника";
+            this.openCardBtn.Click += new System.EventHandler(this.openCardBtn_Click);
+            // 
+            // toolStripSeparator6
+            // 
+            this.toolStripSeparator6.Name = "toolStripSeparator6";
+            this.toolStripSeparator6.Size = new System.Drawing.Size(6, 6);
+            // 
+            // excelImportBtn
+            // 
+            this.excelImportBtn.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.excelImportBtn.Image = ((System.Drawing.Image)(resources.GetObject("excelImportBtn.Image")));
+            this.excelImportBtn.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.excelImportBtn.Name = "excelImportBtn";
+            this.excelImportBtn.Size = new System.Drawing.Size(100, 19);
+            this.excelImportBtn.Text = "Импорт из Excel";
+            this.excelImportBtn.Click += new System.EventHandler(this.excelImportBtn_Click);
+            // 
             // departmentsTableAdapter
             // 
             this.departmentsTableAdapter.ClearBeforeFill = true;
@@ -842,6 +961,44 @@
             this.exportToExcelDataSet.DataSetName = "exportToExcelDataSet";
             this.exportToExcelDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
+            // excelImportFileDialog
+            // 
+            this.excelImportFileDialog.Filter = "(Excel files)|*.xlsx";
+            // 
+            // toolStripSeparator7
+            // 
+            this.toolStripSeparator7.Name = "toolStripSeparator7";
+            this.toolStripSeparator7.Size = new System.Drawing.Size(6, 6);
+            // 
+            // xmlExportBtn
+            // 
+            this.xmlExportBtn.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.xmlExportBtn.Image = ((System.Drawing.Image)(resources.GetObject("xmlExportBtn.Image")));
+            this.xmlExportBtn.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.xmlExportBtn.Name = "xmlExportBtn";
+            this.xmlExportBtn.Size = new System.Drawing.Size(92, 19);
+            this.xmlExportBtn.Text = "Экспорт в XML";
+            this.xmlExportBtn.Click += new System.EventHandler(this.xmlExportBtn_Click);
+            // 
+            // toolStripSeparator8
+            // 
+            this.toolStripSeparator8.Name = "toolStripSeparator8";
+            this.toolStripSeparator8.Size = new System.Drawing.Size(6, 6);
+            // 
+            // xmlImportBtn
+            // 
+            this.xmlImportBtn.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.xmlImportBtn.Image = ((System.Drawing.Image)(resources.GetObject("xmlImportBtn.Image")));
+            this.xmlImportBtn.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.xmlImportBtn.Name = "xmlImportBtn";
+            this.xmlImportBtn.Size = new System.Drawing.Size(97, 19);
+            this.xmlImportBtn.Text = "Импорт из XML";
+            this.xmlImportBtn.Click += new System.EventHandler(this.xmlImportBtn_Click);
+            // 
+            // xmlSaveFileDialog
+            // 
+            this.xmlSaveFileDialog.Filter = "(XML files)|*.xml";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -850,7 +1007,7 @@
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
-            this.MinimumSize = new System.Drawing.Size(1330, 765);
+            this.MinimumSize = new System.Drawing.Size(1329, 764);
             this.Name = "MainForm";
             this.Text = "Карточка сотрудника";
             this.Load += new System.EventHandler(this.MainForm_Load);
@@ -874,20 +1031,24 @@
             this.groupBox5PersonalData.PerformLayout();
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.photoPictureBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fotoPictureBox_2)).EndInit();
             this.groupBox4.ResumeLayout(false);
             this.tableLayoutPanel4.ResumeLayout(false);
             this.groupBox10.ResumeLayout(false);
+            this.groupBox10.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.fKEmplWorkDataEmployeesBindingSource)).EndInit();
             this.groupBox9.ResumeLayout(false);
             this.groupBox9.PerformLayout();
             this.groupBox8.ResumeLayout(false);
             this.groupBox8.PerformLayout();
+            this.groupBox11.ResumeLayout(false);
+            this.groupBox11.PerformLayout();
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBoxEmpl.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.EmployeeGV)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.photoPictureBox)).EndInit();
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.employeeBDBindingSource)).EndInit();
@@ -979,6 +1140,20 @@
         private System.Windows.Forms.TableLayoutPanel photoSeparatorTableLayoutPanel;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
         private System.Windows.Forms.PictureBox photoPictureBox;
+        private System.Windows.Forms.PictureBox fotoPictureBox_2;
+        private System.Windows.Forms.TextBox imageNameHidenField;
+        private System.Windows.Forms.GroupBox groupBox11;
+        private System.Windows.Forms.TextBox cardField;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
+        private System.Windows.Forms.ToolStripButton openCardBtn;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator6;
+        private System.Windows.Forms.ToolStripButton excelImportBtn;
+        private System.Windows.Forms.OpenFileDialog excelImportFileDialog;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator7;
+        private System.Windows.Forms.ToolStripButton xmlExportBtn;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator8;
+        private System.Windows.Forms.ToolStripButton xmlImportBtn;
+        private System.Windows.Forms.SaveFileDialog xmlSaveFileDialog;
     }
 }
 
