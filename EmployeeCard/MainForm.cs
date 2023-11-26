@@ -606,7 +606,49 @@ namespace EmployeeCard
 
         private void xmlImportBtn_Click(object sender, EventArgs e)
         {
+            try
+            {
+                if (xmlOpenFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    var filePath = xmlOpenFileDialog.FileName;
+                    var employeesToXmlList = new EmployeeToXmlList();
+                    var serializer = new XmlSerializer(typeof(EmployeeToXmlList));
 
+                    using ( var reader = new StreamReader(filePath))
+                    {
+                        employeesToXmlList = (EmployeeToXmlList)serializer.Deserialize(reader);
+                    }
+                    var departmentId = 0;
+                    if (employeesToXmlList?.Items?.Count > 0
+                        && int.TryParse(departmentsCB.SelectedValue.ToString(), out departmentId))
+                    {
+                        foreach (var employee in employeesToXmlList.Items)
+                        {
+                            AddEmployeeHelper.Add(new EmployeeDto
+                            {
+
+                                Address = employee.Address,
+                                Age = employee.Age,
+                                BirthDay = employee.BirthDay,
+                                Citizenship = employee.Citizenship,
+                                DepartmentId = departmentId.ToString(),
+                                Education = employee.Education,
+                                EmployeeId = string.Empty,
+                                FirstName = employee.FirstName,
+                                LastName = employee.LastName,
+                                MiddleName = employee.MidleName,
+                                Post = employee.Post,
+                                WorkExperience = employee.WorkExperience
+                            });
+                        }
+                        RefreshData();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
         }
     }
 }

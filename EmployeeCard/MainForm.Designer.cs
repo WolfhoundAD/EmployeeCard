@@ -105,6 +105,10 @@
             this.openCardBtn = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
             this.excelImportBtn = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
+            this.xmlExportBtn = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator8 = new System.Windows.Forms.ToolStripSeparator();
+            this.xmlImportBtn = new System.Windows.Forms.ToolStripButton();
             this.employeeBDBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.departmentsTableAdapter = new EmployeeCard.EmployeeBDDataSetTableAdapters.DepartmentsTableAdapter();
             this.employeesBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -117,11 +121,8 @@
             this.exportToExcelBendingSource = new System.Windows.Forms.BindingSource(this.components);
             this.exportToExcelDataSet = new EmployeeCard.exportToExcelDataSet();
             this.excelImportFileDialog = new System.Windows.Forms.OpenFileDialog();
-            this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
-            this.xmlExportBtn = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator8 = new System.Windows.Forms.ToolStripSeparator();
-            this.xmlImportBtn = new System.Windows.Forms.ToolStripButton();
             this.xmlSaveFileDialog = new System.Windows.Forms.SaveFileDialog();
+            this.xmlOpenFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.menuStrip1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -918,6 +919,36 @@
             this.excelImportBtn.Text = "Импорт из Excel";
             this.excelImportBtn.Click += new System.EventHandler(this.excelImportBtn_Click);
             // 
+            // toolStripSeparator7
+            // 
+            this.toolStripSeparator7.Name = "toolStripSeparator7";
+            this.toolStripSeparator7.Size = new System.Drawing.Size(6, 6);
+            // 
+            // xmlExportBtn
+            // 
+            this.xmlExportBtn.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.xmlExportBtn.Image = ((System.Drawing.Image)(resources.GetObject("xmlExportBtn.Image")));
+            this.xmlExportBtn.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.xmlExportBtn.Name = "xmlExportBtn";
+            this.xmlExportBtn.Size = new System.Drawing.Size(92, 19);
+            this.xmlExportBtn.Text = "Экспорт в XML";
+            this.xmlExportBtn.Click += new System.EventHandler(this.xmlExportBtn_Click);
+            // 
+            // toolStripSeparator8
+            // 
+            this.toolStripSeparator8.Name = "toolStripSeparator8";
+            this.toolStripSeparator8.Size = new System.Drawing.Size(6, 6);
+            // 
+            // xmlImportBtn
+            // 
+            this.xmlImportBtn.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.xmlImportBtn.Image = ((System.Drawing.Image)(resources.GetObject("xmlImportBtn.Image")));
+            this.xmlImportBtn.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.xmlImportBtn.Name = "xmlImportBtn";
+            this.xmlImportBtn.Size = new System.Drawing.Size(97, 19);
+            this.xmlImportBtn.Text = "Импорт из XML";
+            this.xmlImportBtn.Click += new System.EventHandler(this.xmlImportBtn_Click);
+            // 
             // departmentsTableAdapter
             // 
             this.departmentsTableAdapter.ClearBeforeFill = true;
@@ -965,39 +996,13 @@
             // 
             this.excelImportFileDialog.Filter = "(Excel files)|*.xlsx";
             // 
-            // toolStripSeparator7
-            // 
-            this.toolStripSeparator7.Name = "toolStripSeparator7";
-            this.toolStripSeparator7.Size = new System.Drawing.Size(6, 6);
-            // 
-            // xmlExportBtn
-            // 
-            this.xmlExportBtn.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.xmlExportBtn.Image = ((System.Drawing.Image)(resources.GetObject("xmlExportBtn.Image")));
-            this.xmlExportBtn.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.xmlExportBtn.Name = "xmlExportBtn";
-            this.xmlExportBtn.Size = new System.Drawing.Size(92, 19);
-            this.xmlExportBtn.Text = "Экспорт в XML";
-            this.xmlExportBtn.Click += new System.EventHandler(this.xmlExportBtn_Click);
-            // 
-            // toolStripSeparator8
-            // 
-            this.toolStripSeparator8.Name = "toolStripSeparator8";
-            this.toolStripSeparator8.Size = new System.Drawing.Size(6, 6);
-            // 
-            // xmlImportBtn
-            // 
-            this.xmlImportBtn.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.xmlImportBtn.Image = ((System.Drawing.Image)(resources.GetObject("xmlImportBtn.Image")));
-            this.xmlImportBtn.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.xmlImportBtn.Name = "xmlImportBtn";
-            this.xmlImportBtn.Size = new System.Drawing.Size(97, 19);
-            this.xmlImportBtn.Text = "Импорт из XML";
-            this.xmlImportBtn.Click += new System.EventHandler(this.xmlImportBtn_Click);
-            // 
             // xmlSaveFileDialog
             // 
             this.xmlSaveFileDialog.Filter = "(XML files)|*.xml";
+            // 
+            // xmlOpenFileDialog
+            // 
+            this.xmlOpenFileDialog.Filter = "(XML files)|*.xml";
             // 
             // MainForm
             // 
@@ -1154,6 +1159,7 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator8;
         private System.Windows.Forms.ToolStripButton xmlImportBtn;
         private System.Windows.Forms.SaveFileDialog xmlSaveFileDialog;
+        private System.Windows.Forms.OpenFileDialog xmlOpenFileDialog;
     }
 }
 
